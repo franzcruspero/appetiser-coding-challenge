@@ -22,9 +22,6 @@
                 />
             </div>
         </md-card-content>
-        <md-snackbar md-position="left" :md-active.sync="showSnackbar" md-persistent>
-            <span>Success! You have saved the event.</span>
-        </md-snackbar>
     </md-card>
 </template>
 
@@ -60,6 +57,7 @@
             }
         },
         created() {
+            console.log(this.$bvToast)
             this.fireFetchEvent()
         },
         methods: {
@@ -68,7 +66,12 @@
             },
             async fireFetchEvent(value) {
                 if (value) {
-                    this.showSnackbar = true
+                    this.$bvToast.toast(`Your event has been saved.`, {
+                        title: 'Success!',
+                        autoHideDelay: 5000,
+                        variant: 'success',
+                        solid: true
+                    })
                     this.calendarEvents = []
                     const eventData = await axios.get('api/calendar')
                     const finalDays = eventData.data.data.filteredDates.split(',')

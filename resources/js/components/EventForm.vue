@@ -53,9 +53,6 @@
                     </md-button>
                 </md-card-actions>
             </md-card-content>
-            <md-snackbar md-position="left" :md-active.sync="showSnackbar" md-persistent>
-                <span>Oops! You have selected days that are not in your selected dates.</span>
-            </md-snackbar>
         </md-card>
     </form>
 </template>
@@ -145,7 +142,12 @@
                     this.$emit('handleCreateEvent', true)
                 }
                 else {
-                    this.showSnackbar = true
+                    this.$bvToast.toast(`Please check your selected days for your event.`, {
+                        title: 'Oops!',
+                        autoHideDelay: 5000,
+                        variant: 'danger',
+                        solid: true
+                    })
                 }
                 this.isLoading = false
             }
