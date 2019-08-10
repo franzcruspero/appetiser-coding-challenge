@@ -27,7 +27,6 @@
 
 <script>
     import axios from 'axios'
-    import _ from 'lodash'
     import moment from 'moment'
     import FullCalendar from '@fullcalendar/vue'
     import dayGridPlugin from '@fullcalendar/daygrid'
@@ -66,13 +65,16 @@
             },
             async fireFetchEvent(value) {
                 if (value) {
+                    // success toaster
                     this.$bvToast.toast(`Your event has been saved.`, {
                         title: 'Success!',
                         autoHideDelay: 5000,
                         variant: 'success',
                         solid: true
                     })
-                    this.calendarEvents = []
+
+                    this.calendarEvents = [] //reset calendarEvents array to null so that the calendar is cleared for every event created.
+
                     const eventData = await axios.get('api/calendar')
                     const finalDays = eventData.data.data.filteredDates.split(',')
                     const {data:{data:{eventName}}} = eventData
@@ -83,7 +85,7 @@
                             start: `${formattedDate}`,
                             allDay: true
                         })
-                     })
+                    })
                 }
                 else {
                     return null

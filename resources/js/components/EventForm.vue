@@ -60,7 +60,6 @@
 <script>
     import axios from 'axios'
     import moment from 'moment'
-    import {validationMixin} from 'vuelidate'
     import {
         required,
         minLength,
@@ -142,8 +141,8 @@
                     this.$emit('handleCreateEvent', true)
                 }
                 else {
-                    this.$bvToast.toast(`Please check your selected days for your event.`, {
-                        title: 'Oops!',
+                    this.$bvToast.toast(`Please check your selected days for your event or review your form.`, {
+                        title: 'Oops! Something went wrong',
                         autoHideDelay: 5000,
                         variant: 'danger',
                         solid: true
