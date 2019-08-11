@@ -56,7 +56,6 @@
             }
         },
         created() {
-            console.log(this.$bvToast)
             this.fireFetchEvent()
         },
         methods: {
@@ -79,7 +78,7 @@
                     const finalDays = eventData.data.data.filteredDates.split(',')
                     const {data:{data:{eventName}}} = eventData
                     finalDays.forEach((data) => {
-                        const formattedDate = moment(data).format('YYYY-MM-DD')
+                        const formattedDate = moment(data, 'YYYY-MM-DD').format('YYYY-MM-DD')
                         this.calendarEvents.push({
                             title: eventName,
                             start: `${formattedDate}`,

@@ -6,6 +6,14 @@ import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+console.log(Vue.config.devtools)
+Vue.config.devtools = false
+console.log(Vue.config.devtools)
+Vue.config.debug = false
+console.log(Vue.config.debug)
+Vue.config.silent = true
+console.log(Vue.config.silent)
+
 
 Vue.use(VueMaterial)
 Vue.use(Vuelidate)

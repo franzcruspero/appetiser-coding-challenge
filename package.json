@@ -33,6 +33,7 @@
         "@fullcalendar/vue": "^4.2.2",
         "bootstrap-vue": "^2.0.0-rc.27",
         "e": "0.0.4",
+        "gulp": "^4.0.2",
         "moment": "^2.24.0",
         "vue-material": "^1.0.0-beta-11",
         "vuelidate": "^0.7.4"
