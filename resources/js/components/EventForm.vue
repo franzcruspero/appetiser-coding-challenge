@@ -19,15 +19,15 @@
                 </div>
                 <div class="md-layout">
                     <div class="md-layout-item md-size-35 md-small-size-70">
-                        <md-datepicker :class="getValidationClass('startDate')" name="startDate" v-model="form.startDate" >
+                        <md-datepicker :class="getValidationClass('startDate')" name="startDate" v-model="form.startDate" readonly>
                             <label>Start date</label>
-                            <span class="md-error" v-if="!$v.form.startDate.required">Start Date is required</span>
+                            <span class="md-error" v-if="!$v.form.startDate.required">A start date is required.</span>
                         </md-datepicker>
                     </div>
                     <div class="md-layout-item md-size-35 md-small-size-70">
                         <md-datepicker :class="getValidationClass('endDate')" name="endDate" v-model="form.endDate">
                             <label>End date</label>
-                            <span class="md-error" v-if="!$v.form.endDate.required">End date is required</span>
+                            <span class="md-error" v-if="!$v.form.endDate.required">End date is required.</span>
                             <span class="md-error" v-if="!$v.form.endDate.minValue">End date can not be before the start date.</span>
                         </md-datepicker>
                     </div>
@@ -65,15 +65,13 @@
         minLength,
         minValue
     } from 'vuelidate/lib/validators'
-
     export default {
         data() {
-            let now = new Date()
             return {
                 form: {
                     eventName: '',
-                    startDate: now,
-                    endDate: now    ,
+                    startDate: null,
+                    endDate: null,
                     days: []
                 },
                 isLoading: false,
@@ -87,7 +85,7 @@
                         required
                     },
                     startDate: {
-                        required,
+                        required
                     },
                     endDate: {
                         required,
